@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 //页面自动刷新库
 import { AppContainer } from 'react-hot-loader'
 import Hello from './components/hello'
-import Root from 'root'
+import Root from './root'
 // import './index.less'
 
 render(
