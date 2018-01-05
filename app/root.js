@@ -1,16 +1,13 @@
 import React from 'react'
 import Header from './components/header'
-import Progress from './components/progress'
+import Player from './page/player'
 
 let durarion; //音乐的总时间
 let Root = React.createClass({
-    
-    progressChangeHander(progress) { 
-        $('#player').jPlayer('play',durarion*progress)
-    },
+  
     getInitialState() { 
         return {
-            progress: '-',
+            
             
         }
     },
@@ -31,23 +28,15 @@ let Root = React.createClass({
             keyEnabled: true,
             remainingDuration: true,
             toggleDuration: true
-        });  
-        $('#player').bind($.jPlayer.event.timeupdate, (e) => {
-            durarion = e.jPlayer.status.duration
-            console.log('durarion: ', durarion);
-            this.setState({progress:e.jPlayer.status.currentPercentAbsolute })
-         })
+        });
     },
     componentWillUnmount() {
-        $('#player').unbind($.jPlayer.event.timeupdate)
      },
     render() { 
         return (
             <div>
-                
                 <Header />
-                
-                <Progress progress={this.state.progress} barColor={this.state.barColor} onProgressChange={this.progressChangeHander}></Progress>
+                <Player/>
             </div>
         )
     }
